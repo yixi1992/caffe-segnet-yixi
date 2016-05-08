@@ -38,6 +38,7 @@ void FlowImageDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& botto
   std::ifstream infile(source.c_str());
   string filename;
   string label_filename;
+  string line;
   while (std::getline(infile, line)) {
     	std::stringstream ss(line);
 	std::istream_iterator<std::string> begin(ss);
@@ -75,6 +76,7 @@ void FlowImageDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& botto
 		Mat_Arr.push_back(ReadImageToCVMat(root_folder + lines_[lines_id_][flow_id],
 					    new_height, new_width, false, false));
 	}
+	cv::Mat cv_img_flow;
 	cv::merge(Mat_Arr, cv_img_flow);
 	cv_img = cv_img_flow;
   }
@@ -150,6 +152,7 @@ void FlowImageDataLayer<Dtype>::InternalThreadEntry() {
 		Mat_Arr.push_back(ReadImageToCVMat(root_folder + lines_[lines_id_][flow_id],
 					    new_height, new_width, false, false));
 	}
+	cv::Mat cv_img_flow;
 	cv::merge(Mat_Arr, cv_img_flow);
 	cv_img = cv_img_flow;
     }	
@@ -178,6 +181,7 @@ void FlowImageDataLayer<Dtype>::InternalThreadEntry() {
 		Mat_Arr.push_back(ReadImageToCVMat(root_folder + lines_[lines_id_][flow_id],
 					    new_height, new_width, false, false));
 	}
+	cv::Mat cv_img_flow;
 	cv::merge(Mat_Arr, cv_img_flow);
 	cv_img = cv_img_flow;
     }

@@ -51,7 +51,7 @@ class BaseDataLayer : public Layer<Dtype> {
 };
 
 template <typename Dtype>
- BasePrefetchingDataLayer :
+class BasePrefetchingDataLayer :
     public BaseDataLayer<Dtype>, public InternalThread {
  public:
   explicit BasePrefetchingDataLayer(const LayerParameter& param)
